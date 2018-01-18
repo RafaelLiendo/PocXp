@@ -1,0 +1,18 @@
+{
+  "generator-ngx-rocket": {
+    "version": "3.1.1",
+    "props": {
+      "appName": "PocXpAngular",
+      "target": [
+        "web"
+      ],
+      "pwa": true,
+      "ui": "material",
+      "layout": "side-menu",
+      "auth": true,
+      "projectName": "poc-xp-angular",
+      "packageManager": "npm",
+      "mobile": []
+    }
+  }
+}

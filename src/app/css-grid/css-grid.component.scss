@@ -1,0 +1,140 @@
+.container {
+  text-align: left;
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+@media(max-width:600px) {
+  .mat-card-content {
+    display: flex;
+  }
+
+  .mat-card-content,
+  form,
+  .emailGroup,
+  .addresses .mat-card,
+  .addressType,
+  .mat-radio-group {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media(min-width:600px) {
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "firstName          lastName"
+      "emailGroup         emailGroup"
+      "phone              .         "
+      "sendNotifications  .         "
+      "sendCatalog        .         "
+      "addresses          addresses "
+      ".                  addAddress"
+      "save               populateData";
+    grid-gap: 1rem;
+  }
+
+  .firstName {
+    grid-area: firstName;
+  }
+
+  .lastName {
+    grid-area: lastName;
+  }
+
+  .emailGroup {
+    grid-area: emailGroup;
+    display: grid;
+    grid-template-areas:
+      "email confirmEmail";
+    grid-gap: 1rem;
+  }
+
+  .email {
+    grid-area: email;
+  }
+
+  .confirmEmail {
+    grid-area: confirmEmail;
+  }
+
+  .phone {
+    grid-area: phone;
+  }
+
+  .sendNotifications {
+    grid-area: sendNotifications;
+  }
+
+  .sendCatalog {
+    grid-area: sendCatalog;
+  }
+
+  .addresses {
+    grid-area: addresses;
+    display: flex;
+    flex-direction: column;
+    align-items: flex
+  }
+
+  .addresses .mat-card {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      "addressType  addressType addressType .         .         removeAddress"
+      "street1      street1     street1     street2   street2   street2"
+      "city         city        state       state     zip       zip";
+    grid-gap: 1rem;
+  }
+
+  .removeAddress {
+    grid-area: removeAddress;
+  }
+
+  .addressType {
+    grid-area: addressType;
+  }
+
+  .street1 {
+    grid-area: street1;
+  }
+
+  .street2 {
+    grid-area: street2;
+  }
+
+  .city {
+    grid-area: city;
+  }
+
+  .state {
+    grid-area: state;
+  }
+
+  .zip {
+    grid-area: zip;
+  }
+
+  .addAddress {
+    grid-area: addAddress;
+    text-align: right;
+  }
+
+  .save {
+    grid-area: save;
+  }
+
+  .populateData {
+    grid-area: populateData;
+  }
+
+}
