@@ -1,29 +1,90 @@
-import { Component, OnInit } from '@angular/core';
+import { NgModule, Component, ViewChild, enableProdMode } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { DxDataGridComponent } from 'devextreme-angular';
 
-import { environment } from '../../environments/environment';
+import { Order, Service } from './data-grid.service';
+
 
 @Component({
   selector: 'app-data-grid',
   templateUrl: './data-grid.component.html',
   styleUrls: ['./data-grid.component.scss']
 })
-export class DataGridComponent implements OnInit {
+export class DataGridComponent {
 
-  customers: Customer[] = [
-    {CompanyName: 'XP Investimentos', City: 'São Paulo', State: 'SP', 'Phone': '12345678', Fax: '123456' },
-    {CompanyName: 'Ricco', City: 'São Paulo', State: 'SP', 'Phone': '12345678', Fax: '123456' }
-  ];
+  @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;
+  orders: Order[];
+  saleAmountHeaderFilter: any;
+  applyFilterTypes: any;
+  currentFilter: any;
+  showFilterRow: boolean;
+  showHeaderFilter: boolean;
 
-  constructor() { }
+  constructor(service: Service) {
+      this.orders = service.getOrders();
+      this.showFilterRow = true;
+      this.showHeaderFilter = true;
+      this.applyFilterTypes = [{
+          key: 'auto',
+          name: 'Immediately'
+      }, {
+          key: 'onClick',
+          name: 'On Button Click'
+      }];
+      this.saleAmountHeaderFilter = [{
+          text: 'Less than $3000',
+          value: ['SaleAmount', '<', 3000]
+      }, {
+          text: '$3000 - $5000',
+          value: [
+              ['SaleAmount', '>=', 3000],
+              ['SaleAmount', '<', 5000]
+          ]
+      }, {
+          text: '$5000 - $10000',
+          value: [
+              ['SaleAmount', '>=', 5000],
+              ['SaleAmount', '<', 10000]
+          ]
+      }, {
+          text: '$10000 - $20000',
+          value: [
+              ['SaleAmount', '>=', 10000],
+              ['SaleAmount', '<', 20000]
+          ]
+      }, {
+          text: 'Greater than $20000',
+          value: ['SaleAmount', '>=', 20000]
+      }];
+      this.currentFilter = this.applyFilterTypes[0].key;
+      this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
+  }
 
-  ngOnInit() { }
+  private static getOrderDay(rowData: Order) {
+      return (new Date(rowData.OrderDate)).getDay();
+  }
 
-}
+  calculateFilterExpression(value: any, selectedFilterOperations: any, target: any) {
+      const column = this as any;
+      if (target === 'headerFilter' && value === 'weekends') {
+          return [[DataGridComponent.getOrderDay, '=', 0], 'or', [DataGridComponent.getOrderDay, '=', 6]];
+      }
+      return column.defaultCalculateFilterExpression.apply(this, arguments);
+  }
 
-interface Customer {
-  CompanyName: string;
-  City: string;
-  State: string;
-  Phone: string;
-  Fax: string;
+  orderHeaderFilter(data: any) {
+      data.dataSource.postProcess = (results: any) => {
+          results.push({
+              text: 'Weekends',
+              value: 'weekends'
+          });
+          return results;
+      };
+  }
+
+  clearFilter() {
+      this.dataGrid.instance.clearFilter();
+  }
+
 }
