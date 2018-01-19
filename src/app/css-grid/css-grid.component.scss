@@ -11,6 +11,11 @@ h1 {
   vertical-align: middle;
 }
 
+.addAddress,
+.removeAddress {
+  text-align: right;
+}
+
 @media(max-width:600px) {
   .mat-card-content {
     display: flex;
@@ -126,7 +131,6 @@ h1 {
 
   .addAddress {
     grid-area: addAddress;
-    text-align: right;
   }
 
   .save {

@@ -1,5 +1,5 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center">
-  <mat-card fxFlex="80%" fxLayout="column" fxFill>
+  <mat-card fxLayout="column" fxFill>
     <h1>
       <mat-card-title>Sign Up!</mat-card-title>
     </h1>
@@ -77,7 +77,9 @@
           <mat-card *ngFor="let address of addresses.controls; let i=index"
             [formGroupName]="i">
             <!-- Address Type -->
-            <button class="removeAddress" mat-button (click)="removeAddress(i)">Remove</button>
+            <div class="removeAddress">
+              <button class="removeAddress" mat-button (click)="removeAddress(i)">Remove</button>
+            </div>
 
             <div class="addressType">
               <label>Address Type: </label>
