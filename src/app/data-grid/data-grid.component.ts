@@ -9,10 +9,21 @@ import { environment } from '../../environments/environment';
 })
 export class DataGridComponent implements OnInit {
 
-  version: string = environment.version;
+  customers: Customer[] = [
+    {CompanyName: 'XP Investimentos', City: 'São Paulo', State: 'SP', 'Phone': '12345678', Fax: '123456' },
+    {CompanyName: 'Ricco', City: 'São Paulo', State: 'SP', 'Phone': '12345678', Fax: '123456' }
+  ];
 
   constructor() { }
 
   ngOnInit() { }
 
+}
+
+interface Customer {
+  CompanyName: string;
+  City: string;
+  State: string;
+  Phone: string;
+  Fax: string;
 }
