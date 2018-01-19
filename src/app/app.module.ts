@@ -16,6 +16,7 @@ import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
 import { SampleFormModule } from './sample-form/sample-form.module';
 import { CssGridModule } from './css-grid/css-grid.module';
+import { DataGridModule } from './data-grid/data-grid.module';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { CssGridModule } from './css-grid/css-grid.module';
     LoginModule,
     SampleFormModule,
     CssGridModule,
+    DataGridModule,
     AppRoutingModule
 
   ],
