@@ -22,14 +22,17 @@
   justify-content: center;
 }
 
-@media (max-width: 600px) {
-  .logo {
-      height: 56px;
-  }
+.mat-sidenav-content {
+  padding-top: 64px;
 }
 
-.header-container {
-  height: 65px;
+@media (max-width: 600px) {
+  .logo {
+    height: 56px;
+  }
+  .mat-sidenav-content {
+    padding-top: 56px;
+  }
 }
 
 .header,
@@ -42,6 +45,7 @@
 .header {
   border-bottom: 3px solid #FFC709;
   position: fixed;
+  top: 0;
   z-index: 2;
 }
 
