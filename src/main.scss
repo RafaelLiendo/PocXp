@@ -22,12 +22,11 @@
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 
-@include angular-material-theme($app-dark-theme);
-
-.light-theme,
-.cdk-overlay-container {
-  @include angular-material-theme($app-theme);
+.dark-theme {
+  @include angular-material-theme($app-dark-theme);
 }
+
+@include angular-material-theme($app-theme);
 
 @import "../node_modules/devextreme/dist/css/dx.common.css";
 @import "../node_modules/devextreme/dist/css/dx.android5.light.css";
