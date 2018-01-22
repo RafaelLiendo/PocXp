@@ -35,18 +35,17 @@
   }
 }
 
-.header,
-.header-left,
-.header-right {
+.header{
   display: flex;
   justify-content: space-between;
-}
-
-.header {
   border-bottom: 3px solid #FFC709;
   position: fixed;
   top: 0;
   z-index: 2;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 .is-mobile .header {
