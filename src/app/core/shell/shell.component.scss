@@ -67,6 +67,10 @@
   flex: 1 0 auto;
 }
 
+.mat-sidenav-content.opened .header {
+  padding-right: 270px;
+}
+
 .mat-sidenav {
   min-width: 270px;
   max-width: 28%;
