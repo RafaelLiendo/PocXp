@@ -1,6 +1,6 @@
 {
   "generator-ngx-rocket": {
-    "version": "3.1.1",
+    "version": "3.2.0",
     "props": {
       "appName": "PocXpAngular",
       "target": [
@@ -12,7 +12,11 @@
       "auth": true,
       "projectName": "poc-xp-angular",
       "packageManager": "npm",
-      "mobile": []
+      "mobile": [],
+      "description": "PocXP",
+      "author": "XpInvestimentos",
+      "advanced": true,
+      "className": "PocXpAngular"
     }
   }
 }
